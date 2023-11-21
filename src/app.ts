@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import createError from 'http-errors';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -26,7 +26,7 @@ interface Error {
     message?: string;
 }
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response) => {
     const statusCode = err.status || 500;
     res.status(statusCode).json({
         status: statusCode,
